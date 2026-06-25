@@ -13,7 +13,7 @@ def main():
     print(f"after formatting: {formatted}")
     save_note(formatted)
     print("Note saved!")
-    print("bye bye")
+    print("v1 is working")
 
 if __name__ == "__main__":
     main()
