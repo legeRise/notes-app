@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <h1>📝 Notes</h1>
+
+        <form action="{{ url_for('add_note') }}" method="POST" class="note-form">
+            <input
+                type="text"
+                name="note"
+                placeholder="Enter a note..."
+                autocomplete="off"
+                autofocus
+                required
+            >
+            <button type="submit" class="btn btn-primary">Add Note</button>
+        </form>
+
+        {% if notes %}
+            <ul class="notes-list">
+                {% for note in notes %}
+                    <li class="note-item">{{ note }}</li>
+                {% endfor %}
+            </ul>
+
+            <form action="{{ url_for('clear_all') }}" method="POST" class="clear-form">
+                <button type="submit" class="btn btn-danger">Clear All</button>
+            </form>
+        {% else %}
+            <p class="empty">No notes yet. Add your first note above!</p>
+        {% endif %}
+    </main>
+</body>
+</html>
